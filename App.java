@@ -9,7 +9,7 @@ public class App {
 
         System.out.println("첫번째 양수를 입력하시오 : ");
         int a = sc.nextInt();
-        calc.setSecondOperand(a);
+        calc.setFirstOperand(a);
 
         sc.nextLine();
 
@@ -19,12 +19,9 @@ public class App {
 
         System.out.println("두번째 양수를 입력하시오 : ");
         int b = sc.nextInt();
-        calc.setFirstOperand(b);
+        calc.setSecondOperand(b);
 
         System.out.println("결과 : " + calc.operation(a,b,operator));
-
-        System.out.println(calc.operation(3,4,"+"));
-
 
 
     }

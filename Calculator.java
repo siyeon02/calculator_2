@@ -11,6 +11,7 @@ public class Calculator {
      public int operation(int firstOperand, int secondOperand, String operator) {
          while (true) {
              Scanner sc = new Scanner(System.in);
+
              System.out.println("종료는 exit 입력");
              String text = sc.nextLine();
              if(text.equals("exit")){
@@ -19,18 +20,30 @@ public class Calculator {
 
              switch (operator) {
                  case "+":
+                     //System.out.println("결과 : ");
                      return firstOperand + secondOperand;
                  //break;
                  case "-":
+                     //System.out.println("결과 : ");
                      return firstOperand - secondOperand;
                  //break;
                  case "*":
+                     //System.out.println("결과 : ");
                      return firstOperand * secondOperand;
                  //break;
                  case "/":
-                     return firstOperand / secondOperand;
-                 //break;
+                     if(secondOperand == 0){
+                         System.out.println("나눗셈 연산에서 두번째 정수에 0이 입력될 수 없습니다!");
+                         break;
+                     }
+                     else{
+                         //System.out.println("결과 : ");
+                         return firstOperand / secondOperand;
+
+                     }
+
              }
+
          }
 
          return 0;
