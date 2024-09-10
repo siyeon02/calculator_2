@@ -2,6 +2,7 @@ package calculator_2;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Calculator {
     public int firstOperand;
@@ -9,10 +10,24 @@ public class Calculator {
     public String operator;
     private final ArrayList<Integer> results = new ArrayList<>();
     int result = 0;
+    private static final String OPERATION_REG = "[+\\-*/]";
+    private static final String NUMBER_REG = "^[0-9]*$";
 
     public Calculator() {}
-     public int operation(int firstOperand, int secondOperand, String operator) {
-         //while (true) {
+     public int operation(int firstOperand, int secondOperand, String operator) throws Exception{
+
+        boolean judge_operator = Pattern.matches(OPERATION_REG, operator);
+        boolean judge_operand1 = Pattern.matches(NUMBER_REG, Integer.toString(firstOperand));
+        boolean judge_operand2 = Pattern.matches(NUMBER_REG, Integer.toString(secondOperand));
+
+        if(judge_operator==false){
+            throw new BadInputException("연산자");
+        }else if(judge_operand1==false){
+            throw new BadInputException("양수");
+        }else if(judge_operand2==false){
+            throw new BadInputException("양수");
+        }
+
              Scanner sc = new Scanner(System.in);
 
              switch (operator) {
@@ -46,7 +61,7 @@ public class Calculator {
                      System.out.println("다시 입력해주세요 : ");
 
              }
-        // }
+
          return 0;
      }
 
