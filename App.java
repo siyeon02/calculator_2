@@ -32,10 +32,23 @@ public class App {
 
             System.out.println("결과 : " + calc.operation(a,b,operator));
 
-            System.out.println("첫번째 결과 값을 삭제하시겠습니까? (y/n): ");
-            String answer = sc.next();
+            System.out.println("결과 값들을 수정하시겠습니까? (y/n): ");
+            String answer1 = sc.next();
 
-            if(Objects.equals(answer, "y")){
+            if(Objects.equals(answer1,"y")){
+                calc.getResults();
+                System.out.println("수정하고 싶은 결과의 인덱스와 값을 입력해주세요 : ");
+                int index = sc.nextInt();
+                int result_s = sc.nextInt();
+                calc.setResults(index, result_s);
+            }
+
+
+
+            System.out.println("첫번째 결과 값을 삭제하시겠습니까? (y/n): ");
+            String answer2 = sc.next();
+
+            if(Objects.equals(answer2, "y")){
                 calc.deleteFirst();
                 System.out.println("첫번째 결과 값이 삭제되었습니다.");
 

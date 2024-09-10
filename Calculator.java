@@ -1,7 +1,5 @@
 package calculator_2;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,13 +7,11 @@ public class Calculator {
     public int firstOperand;
     public int secondOperand;
     public String operator;
-    ArrayList<Integer> results = new ArrayList<>();
+    private final ArrayList<Integer> results = new ArrayList<>();
     int result = 0;
 
     public Calculator() {}
      public int operation(int firstOperand, int secondOperand, String operator) {
-
-
          //while (true) {
              Scanner sc = new Scanner(System.in);
 
@@ -23,17 +19,17 @@ public class Calculator {
                  case "+":
                      result = firstOperand + secondOperand;
                      results.add(result);
-                     return results.get(results.size()-1);
+                     return results.getLast();
 
                  case "-":
                      result = firstOperand - secondOperand;
                      results.add(result);
-                     return results.get(results.size()-1);
+                     return results.getLast();
 
                  case "*":
                      result = firstOperand * secondOperand;
                      results.add(result);
-                     return results.get(results.size()-1);
+                     return results.getLast();
 
                  case "/":
                      if(secondOperand == 0){
@@ -43,7 +39,7 @@ public class Calculator {
                      else{
                          result = firstOperand / secondOperand;
                          results.add(result);
-                         return results.get(results.size()-1);
+                         return results.getLast();
 
                      }
                  default:
@@ -54,27 +50,33 @@ public class Calculator {
          return 0;
      }
 
-     public int setFirstOperand(int firstOperand) {
+     public void setFirstOperand(int firstOperand) {
         this.firstOperand = firstOperand;
-        return this.firstOperand;
 
      }
 
-    public int setSecondOperand(int secondOperand) {
+    public void setSecondOperand(int secondOperand) {
         this.secondOperand = secondOperand;
-        return this.secondOperand;
 
     }
 
-    public String setOperator(String operator) {
+    public void setOperator(String operator) {
         this.operator = operator;
-        return this.operator;
     }
 
-    public String deleteFirst(){
-        results.remove(0);
+    public void getResults(){
         System.out.println(results.toString());
-        return this.results.toString();
+    }
+
+    public void setResults(int index, int a){
+        results.set(index, a);
+        System.out.println("수정 후 결과 값들 : " + results.toString());
+    }
+
+    public void deleteFirst(){
+        results.removeFirst();
+        System.out.println(results.toString());
+        this.results.toString();
     }
 
 
